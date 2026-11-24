@@ -277,14 +277,14 @@ def icon_bank(cv, ox, oy):
     draw_text_centered(cv, ox + 312, oy + 58 - 28, "$", 8, INK)
     # broken chain: two links on each side of a red break
     gray = (96, 100, 108)
-    cv.ellipse(ox + 262, oy + 162, 30, 17, gray, inner=9)
-    cv.ellipse(ox + 304, oy + 162, 30, 17, gray, inner=9)
-    cv.ellipse(ox + 396, oy + 162, 30, 17, gray, inner=9)
-    cv.ellipse(ox + 438, oy + 162, 30, 17, gray, inner=9)
-    cv.rect(ox + 326, oy + 140, 48, 46, PANEL)            # the gap
-    for (x1, y1, x2, y2) in ((350, 132, 340, 150), (350, 192, 340, 174),
-                             (336, 162, 322, 162), (364, 162, 378, 162),
-                             (360, 136, 368, 148), (360, 188, 368, 176)):
+    cv.ellipse(ox + 254, oy + 164, 28, 16, gray, inner=9)
+    cv.ellipse(ox + 292, oy + 164, 28, 16, gray, inner=9)
+    cv.ellipse(ox + 384, oy + 164, 28, 16, gray, inner=9)
+    cv.ellipse(ox + 422, oy + 164, 28, 16, gray, inner=9)
+    cv.rect(ox + 314, oy + 142, 48, 46, PANEL)            # the gap
+    for (x1, y1, x2, y2) in ((338, 134, 328, 152), (338, 194, 328, 176),
+                             (324, 164, 310, 164), (352, 164, 366, 164),
+                             (348, 138, 356, 150), (348, 190, 356, 178)):
         cv.line(ox + x1, oy + y1, ox + x2, oy + y2, 5, RED)
 
 
@@ -319,9 +319,9 @@ def icon_warship(cv, ox, oy):
     flame(cv, ox + 340, sea_top + 8, 44, 46)
     flame(cv, ox + 60, sea_top + 10, 34, 34)
     # sea drone racing in from the right, with its wake
-    dx, dy = ox + 392, sea_top + 6
+    dx, dy = ox + 376, sea_top + 6
     for k in range(3):
-        cv.line(dx + 40 + k * 14, dy + 2 + k * 6, dx + 58 + k * 14, dy + 2 + k * 6, 4, WHITE)
+        cv.line(dx + 46 + k * 8, dy - 6 + k * 8, dx + 62 + k * 8, dy - 6 + k * 8, 4, WHITE)
     cv.polygon([(dx - 26, dy), (dx + 2, dy - 12), (dx + 40, dy - 10), (dx + 40, dy + 10), (dx + 2, dy + 10)], DARK)
     cv.rect(dx + 8, dy - 18, 16, 8, DARK)
     # impact burst where it meets the hull
@@ -350,10 +350,11 @@ def icon_awacs(cv, ox, oy):
         x, y = mx + u * mw, my + v * mh
         cv.line(x - 11, y - 11, x + 11, y + 11, 7, RED)
         cv.line(x - 11, y + 11, x + 11, y - 11, 7, RED)
+    draw_text(cv, mx + 66, my + 108, "POLAND", 2.8, (30, 60, 30))
     # AWACS plane with its radar dome, flying over the map
     body = (205, 210, 220)
     edge = (40, 44, 56)
-    px, py = ox + 160, oy + 92
+    px, py = ox + 180, oy + 92
     wing = [(px - 10, py - 6), (px + 40, py - 6), (px - 50, py + 66), (px - 82, py + 66)]
     wing_far = [(px - 4, py - 4), (px + 30, py - 4), (px - 32, py - 48), (px - 56, py - 48)]
     tail = [(px - 150, py - 4), (px - 118, py - 4), (px - 150, py - 52), (px - 172, py - 52)]
@@ -431,7 +432,7 @@ def draw_page():
         lines = wrap(caption, per_line)
         ly = py + ph - 14 - len(lines) * (7 * cap_s + 8) + 8
         for line in lines:
-            draw_text(cv, px + 16, ly, line, cap_s, INK, bold=False)
+            draw_text(cv, px + 16, ly, line, cap_s, INK)
             ly += 7 * cap_s + 8
     return cv.downsample()
 
