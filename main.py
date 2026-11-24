@@ -350,7 +350,7 @@ def icon_awacs(cv, ox, oy):
         x, y = mx + u * mw, my + v * mh
         cv.line(x - 11, y - 11, x + 11, y + 11, 7, RED)
         cv.line(x - 11, y + 11, x + 11, y - 11, 7, RED)
-    draw_text(cv, mx + 66, my + 108, "POLAND", 2.8, (30, 60, 30))
+    draw_text(cv, mx + 82, my + 104, "POLAND", 2.8, (30, 60, 30))
     # AWACS plane with its radar dome, flying over the map
     body = (205, 210, 220)
     edge = (40, 44, 56)
